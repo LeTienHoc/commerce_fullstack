@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Logo from '../../assets/images/bacola-logo.png'
+import Logo from '../../assets/images/logo.jpg'
 import CountryDropdown from '../CountryDropdown';
 import Button from '@mui/material/Button';
 import { LuUser2 } from "react-icons/lu";

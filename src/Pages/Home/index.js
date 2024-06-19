@@ -3,7 +3,6 @@ import banner_box from "../../assets/images/banner-box.jpg"
 import banner2 from "../../assets/images/banner2.png"
 import Button from '@mui/material/Button';
 import { IoIosArrowRoundForward } from "react-icons/io";
-import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';

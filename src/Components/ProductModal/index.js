@@ -1,47 +1,17 @@
-import React, { useContext, useRef, useState } from 'react'
+import { useContext} from 'react'
 import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import { IoMdClose } from "react-icons/io";
 import { Rating } from '@mui/material';
-import Slider from 'react-slick';
-import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import QuanntityBox from '../QuantityBox';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { MdCompareArrows } from "react-icons/md";
 import { MyContext } from '../../App';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import ProductZoom from '../ProductZoom';
 
 
 const ProductModal = (props) => {
-    const zoomSlider = useRef();
-    const zoomSliderBig = useRef();
     const context = useContext(MyContext)
-    var settings2 = {
-        dots: false,
-        infinite: false,
-        speed: 700,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: false,
-        arrows: false
-    }
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        fade: false,
-        arrows: false
-    }
-    const [slideIndex, setslideIndex] = useState(0)
-    const goto = (index) => {
-        setslideIndex(index)
-        zoomSlider.current.swiper.slideTo(index)
-        zoomSliderBig.current.swiper.slideTo(index)
-    }
     return (
         <>
             <Dialog open={true} className='productModal' onClose={() => context.setisOpenProductModel(false)}>
@@ -57,73 +27,7 @@ const ProductModal = (props) => {
                 <hr></hr>
                 <div className='row mt-2 productDetailModal'>
                     <div className='col-md-5'>
-                        <div className='productZoom position-relative'>
-                            <div className='badge badge-primary'>10%</div>
-                            <Swiper
-                                slidesPerGroup={1}
-                                spaceBetween={0}
-                                navigation={false}
-                                slidesPerView={1}
-                                modules={[Navigation]}
-                                className='zoomSliderBig'
-                                ref={zoomSliderBig}
-                            >
-                                <SwiperSlide>
-                                    <div className='item'>
-                                        <InnerImageZoom
-                                            zoomType='hover' zoomScale={1}
-                                            src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60.jpg'
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className='item'>
-                                        <InnerImageZoom
-                                            zoomType='hover' zoomScale={1}
-                                            src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-46.jpg'
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className='item'>
-                                        <InnerImageZoom
-                                            zoomType='hover' zoomScale={1}
-                                            src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-34.jpg'
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                            </Swiper>
-                        </div>
-                        <Swiper
-                            slidesPerGroup={1}
-                            spaceBetween={0}
-                            navigation={true}
-                            slidesPerView={4}
-                            modules={[Navigation]}
-                            className='zoomSlider mt-3'
-                            ref={zoomSlider}
-                        >
-                            <SwiperSlide>
-                                <div className={`item ${slideIndex === 0 && 'item_active'}`}>
-                                    <img src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60.jpg'
-                                        onClick={() => goto(0)}
-                                        className='w-100' />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`item ${slideIndex === 1 && 'item_active'}`}>
-                                    <img src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-46.jpg'
-                                        onClick={() => goto(1)}
-                                        className='w-100' />
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`item ${slideIndex === 2 && 'item_active'}`}>
-                                    <img src='https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-34.jpg'
-                                        onClick={() => goto(2)} className='w-100' />
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
+                        <ProductZoom/>
                     </div>
                     <div className='col-md-7'>
                         <div className='d-flex info align-items-center mb-3'>
@@ -134,7 +38,7 @@ const ProductModal = (props) => {
                         <p className='mt-3'>Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent</p>
                         <div className='d-flex align-items-center'>
                             <QuanntityBox />
-                            <Button className='btn-blue btn-lg btn-big btn-round ml-3'>Thêm vào giỏ hàng</Button>
+                            <Button className='btn-blue btn-lg btn-big btn-round bg-red ml-3'>Thêm vào giỏ hàng</Button>
                         </div>
                         <div className='d-flex align-items-center mt-4 actions'>
                             <Button className='btn-round btn-sml' variant='outlined'><IoIosHeartEmpty /> &nbsp; Yêu thích</Button>
