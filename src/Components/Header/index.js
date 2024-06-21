@@ -28,20 +28,27 @@ const Header = () => {
                         </div>
                         <div className='col-sm-10 d-flex align-items-center part2'>
                             {
-                                context.countryList.length!==0 && <CountryDropdown />
+                                context.countryList.length !== 0 && <CountryDropdown />
                             }
-                            
-                            <SearchBox/>
+
+                            <SearchBox />
                             <div className='part3 d-flex align-items-center ml-auto'>
-                                <Button className='circle mr-3'>
-                                    <LuUser2 />
-                                </Button>
+                                {
+                                    !context.isLogin ? <Link to='/SignIn'><Button
+                                        className='btn-blue btn-round mr-3'
+                                        style={{ background: "#6d4aae", padding: '8px 15px' }}>Đăng nhập</Button></Link> :
+                                        <Button className='circle mr-3'>
+                                            <LuUser2 />
+                                        </Button>
+                                }
                                 <div className='ml-auto cartTab d-flex align-items-center'>
                                     <span className='price'>2.543 tr</span>
                                     <div className='position-relative ml-2'>
-                                        <Button className='circle'>
-                                            <IoBagOutline />
-                                        </Button>
+                                        <Link to='/cart'>
+                                            <Button className='circle'>
+                                                <IoBagOutline />
+                                            </Button>
+                                        </Link>
                                         <span className='count d-flex align-items-center justify-content-center'>1</span>
                                     </div>
                                 </div>
@@ -50,8 +57,8 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <Navigation/>
-            
+            <Navigation />
+
         </div>
     )
 }
