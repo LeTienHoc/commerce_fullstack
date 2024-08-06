@@ -2,7 +2,9 @@
   margin: 0px;
   padding: 0px;
 }
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 
@@ -1569,4 +1571,40 @@ a:hover {
   color: #000;
 }.border-effect:hover::after{
   width: 100%;
+}
+
+/*  Reponsive*/
+
+/* Mobie; */
+@media only screen and (max-width:739px)
+{
+  .signInPage .box {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    margin: auto;
+    position: relative;
+    z-index:100;
+    border-radius: 10px  !important;
+  }
+}
+
+/* table; */
+@media only screen and (min-width:740px) and (max-width:1023px)
+{
+  
+}
+
+/* desktop; */
+@media only screen and (min-width:1024px)
+{
+  .signInPage .box {
+    width: 500px;
+    height: auto;
+    background: #fff;
+    margin: auto;
+    position: relative;
+    z-index:100;
+    border-radius: 10px  !important;
+  }
 }

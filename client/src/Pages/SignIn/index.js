@@ -26,6 +26,7 @@ const SignIn = () => {
                         <img src={Logo} />
                     </div>
                     <form className='mt-3'>
+                  
                         <h2 className='mb-4'>Đăng nhập</h2>
                         <div className='form-group'>
                             <TextField id="standard-basic" className='w-100' label="Email" type='email' required variant="standard" />
@@ -38,8 +39,8 @@ const SignIn = () => {
                         <p className='txt'>Bạn chưa đăng ký? <Link to="/signUp" className='border-effect'>Đăng ký</Link></p>
                         <h6 className='mt-4 text-center font-weight-bold'>Hoặc đăng nhập bằng</h6>
                         <span className='cursor d-flex align-items-center justify-content-center'>
-                            <img className='mr-2' height={40} src={Google} />
-                            <img height={32} src={Facebook} />
+                            <img className='mr-2 w-10' height={40} src={Google} />
+                            <img className='w-8' height={32} src={Facebook} />
                         </span>
                     </form>
                 </div>
