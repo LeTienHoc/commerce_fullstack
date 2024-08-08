@@ -48,7 +48,7 @@ const SignIn = () => {
                     <div className='text-center'>
                         <img src={Logo} alt='logo' />
                     </div>
-                    <form className='mt-3' >
+                    <form className='mt-3'>
                         <h2 className='mb-4'>Đăng nhập</h2>
                         <div className='form-group'>
                             <TextField id="standard-basic"
@@ -87,8 +87,8 @@ const SignIn = () => {
                         <p className='txt'>Bạn chưa đăng ký? <Link to="/signUp" className='border-effect'>Đăng ký</Link></p>
                         <h6 className='mt-4 text-center font-weight-bold'>Hoặc đăng nhập bằng</h6>
                         <span className='cursor d-flex align-items-center justify-content-center'>
-                            <img className='mr-2' height={40} src={Google} alt='google' />
-                            <img height={32} src={Facebook} alt='facebook' />
+                            <img className='mr-2' height={40} src={Google} alt='google'/>
+                            <img height={32} src={Facebook} alt='facebook'/>
                         </span>
                     </form>
                 </div>
