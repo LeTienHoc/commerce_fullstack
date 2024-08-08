@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Google from '../../assets/images/google.png'
 import Facebook from '../../assets/images/facebook.png'
 
+
 const SignUp = () => {
     const context = useContext(MyContext)
     useEffect(() => {
