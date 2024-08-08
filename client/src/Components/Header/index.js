@@ -1,16 +1,58 @@
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
+import Button from '@mui/material/Button';
+
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { IoBagOutline } from "react-icons/io5";
+
 import Logo from '../../assets/images/logo.jpg'
 import CountryDropdown from '../CountryDropdown';
-import Button from '@mui/material/Button';
 import { LuUser2 } from "react-icons/lu";
-import { IoBagOutline } from "react-icons/io5";
 import SearchBox from './SearchBox';
 import Navigation from './Navigation';
-import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../App';
+import { useNavigate } from 'react-router-dom'
+import authorizedAxiosInstance from '../../utils/authorizedAxios';
+import { API_ROOT } from '../../utils/constants';
+import { handleLogoutAPI } from '../../apis/loginApi';
+
+
+
 const Header = () => {
 
+    const [user, setUser] = useState(null)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await authorizedAxiosInstance.get(`${API_ROOT}/v1/dashboards/access`)
+            setUser(res.data)
+        }
+        fetchData()
+    }, [])
+    const handleLogout = async () => {
+        await handleLogoutAPI()
+        navigate('/SignIn')
+    }
+
     const context = useContext(MyContext)
+    if (!user) {
+        return (
+            <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 2,
+                width: '100vw',
+                height: '100vh'
+            }}>
+                <CircularProgress />
+                <Typography>Loading dashboard user...</Typography>
+            </Box>
+        )
+    }
     return (
         <div className="headerWrapper">
             <div className="top-strip bg-blue">
@@ -34,7 +76,7 @@ const Header = () => {
                             <SearchBox />
                             <div className='part3 d-flex align-items-center ml-auto'>
                                 {
-                                    !context.isLogin ? <Link to='/SignIn'><Button
+                                    !user ? <Link to='/SignIn'><Button
                                         className='btn-blue btn-round mr-3'
                                         style={{ background: "#6d4aae", padding: '8px 15px' }}>Đăng nhập</Button></Link> :
                                         <Button className='circle mr-3'>
@@ -50,6 +92,14 @@ const Header = () => {
                                             </Button>
                                         </Link>
                                         <span className='count d-flex align-items-center justify-content-center'>1</span>
+                                    </div>
+                                    <div className='ml-auto'>
+                                        {
+                                            user?<Button
+                                                className='btn-blue btn-round'
+                                                style={{ background: "#6d4aae" }}
+                                                onClick={handleLogout}>Đăng xuất</Button>:''
+                                        }
                                     </div>
                                 </div>
                             </div>
